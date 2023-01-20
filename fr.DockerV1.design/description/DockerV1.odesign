@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="DockerV1" version="12.0.0.2017041100">
+  <ownedViewpoints name="DockerV1" modelFileExtension="dockerv1">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="docker diagram" domainClass="DockerV1::DockerEngine" enablePopupBars="true">
+      <metamodel href="http://www.example.org/DockerV1#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="DD_Image" domainClass="DockerV1::Image">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="feature:repository" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/fr.DockerV1.design/DockerImage.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="DD_Container" semanticCandidatesExpression="feature:eAllContents" domainClass="DockerV1::Container">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/fr.DockerV1.design/docker-container.jpg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="DD_Volume" domainClass="DockerV1::Volume">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/fr.DockerV1.design/volume.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="DD_Network" domainClass="DockerV1::Network">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/fr.DockerV1.design/networkcont.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ContainerPaused" domainClass="DockerV1::ContainerPaused">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/fr.DockerV1.design/pause.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ContainerRun" domainClass="DockerV1::ContainerRunning">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/fr.DockerV1.design/play.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ContainerStopped" domainClass="DockerV1::ContainerStopped">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/fr.DockerV1.design/stop-button.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="connect" sourceMapping="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Container']" targetMapping="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Network']" targetFinderExpression="[network/]">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="instance" sourceMapping="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Image']" targetMapping="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Container']" targetFinderExpression="[container/]">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="volume" sourceMapping="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Container']" targetMapping="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Volume']" targetFinderExpression="[volume/]">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="image" nodeMappings="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Image']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DockerV1::Image" referenceName="dockerobject"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="container" nodeMappings="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Container']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DockerV1::Container" referenceName="dockerobject"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="volume" nodeMappings="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Volume']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DockerV1::Volume" referenceName="dockerobject"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="network" nodeMappings="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='DD_Network']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DockerV1::Network" referenceName="dockerobject"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="ContainerPaused" nodeMappings="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='ContainerPaused']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DockerV1::Container" referenceName="dockerobject"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="ContainerRun" nodeMappings="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='ContainerRun']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DockerV1::Container" referenceName="dockerobject"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="ContainerStop" nodeMappings="//@ownedViewpoints[name='DockerV1']/@ownedRepresentations[name='docker%20diagram']/@defaultLayer/@nodeMappings[name='ContainerStopped']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="DockerV1::Container" referenceName="dockerobject"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="fr.DockerV1.design.Services"/>
+  </ownedViewpoints>
+</description:Group>

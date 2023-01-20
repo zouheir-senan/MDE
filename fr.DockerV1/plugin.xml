@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DockerV1 -->
+      <package
+            uri="http://www.example.org/DockerV1"
+            class="fr.DockerV1.DockerV1Package"
+            genModel="model/DockerV1.genmodel"/>
+   </extension>
+
+</plugin>

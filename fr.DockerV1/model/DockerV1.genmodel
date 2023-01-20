@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/fr.DockerV1/src-gen" creationIcons="false" editDirectory="/fr.DockerV1.edit/src-gen"
+    editorDirectory="/fr.DockerV1.editor/src-gen" modelPluginID="fr.DockerV1" modelName="DockerV1"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>DockerV1.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="DockerV1" basePackage="fr" disposableProviderFactory="true"
+      ecorePackage="DockerV1.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DockerV1.ecore#//TypeNetwork">
+      <genEnumLiterals ecoreEnumLiteral="DockerV1.ecore#//TypeNetwork/bridge"/>
+      <genEnumLiterals ecoreEnumLiteral="DockerV1.ecore#//TypeNetwork/host"/>
+      <genEnumLiterals ecoreEnumLiteral="DockerV1.ecore#//TypeNetwork/none"/>
+    </genEnums>
+    <genClasses ecoreClass="DockerV1.ecore#//Image">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerV1.ecore#//Image/container"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//Image/repository"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//Image/tag"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerV1.ecore#//DockerEngine">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerV1.ecore#//DockerEngine/dockerobject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//DockerEngine/base_url"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerV1.ecore#//Container">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DockerV1.ecore#//Container/volume"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DockerV1.ecore#//Container/network"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//Container/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerV1.ecore#//Container/conainerstatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//Container/command"/>
+      <genOperations ecoreOperation="DockerV1.ecore#//Container/ChangeStatus">
+        <genParameters ecoreParameter="DockerV1.ecore#//Container/ChangeStatus/status"/>
+      </genOperations>
+      <genOperations ecoreOperation="DockerV1.ecore#//Container/Container">
+        <genParameters ecoreParameter="DockerV1.ecore#//Container/Container/image"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="DockerV1.ecore#//Volume">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//Volume/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//Volume/MountpointOUT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//Volume/MountpointIN"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerV1.ecore#//Network">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//Network/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerV1.ecore#//Network/driver"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerV1.ecore#//DockerObject"/>
+    <genClasses ecoreClass="DockerV1.ecore#//Service"/>
+    <genClasses ecoreClass="DockerV1.ecore#//ConainerStatus"/>
+    <genClasses ecoreClass="DockerV1.ecore#//ContainerRunning">
+      <genOperations ecoreOperation="DockerV1.ecore#//ContainerRunning/Stope">
+        <genParameters ecoreParameter="DockerV1.ecore#//ContainerRunning/Stope/status"/>
+      </genOperations>
+      <genOperations ecoreOperation="DockerV1.ecore#//ContainerRunning/Pause">
+        <genParameters ecoreParameter="DockerV1.ecore#//ContainerRunning/Pause/status"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="DockerV1.ecore#//ContainerStopped">
+      <genOperations ecoreOperation="DockerV1.ecore#//ContainerStopped/Run">
+        <genParameters ecoreParameter="DockerV1.ecore#//ContainerStopped/Run/status"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="DockerV1.ecore#//ContainerPaused">
+      <genOperations ecoreOperation="DockerV1.ecore#//ContainerPaused/Run">
+        <genParameters ecoreParameter="DockerV1.ecore#//ContainerPaused/Run/status"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

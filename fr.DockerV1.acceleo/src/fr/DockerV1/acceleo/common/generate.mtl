@@ -1,0 +1,34 @@
+
+[module generate('http://www.example.org/DockerV1')]
+
+
+[template public generateClient(aDockerEngine : DockerEngine)]
+[comment @main /]
+[file ('script.py', false, 'windows-1252')]
+from docker import DockerClient
+client = DockerClient(base_url='[aDockerEngine.base_url/]')
+[/file]
+[/template]
+
+[template public generateAll(image : Image)]
+[comment @main /]
+[file ('script.py', true, 'windows-1252')]
+img=client.images.pull("[image.repository/]")
+[for (conta : Container | image.container)]
+volume=None
+[for (volume : Volume | conta.volume)]
+volume=[ '[' /] '[volume.MountpointIN/]:[volume.MountpointOUT/]'[ ']' /] 
+[/for]
+network=None
+[for (network : Network | conta.network)]
+client.networks.create("[network.name/]", driver="[network.driver/]")
+network="[network.name/]"
+[/for]
+contain=client.containers.create('[image.repository/]',command='[conta.command/]',name='[conta.name/]',network=network,volume=volume)
+
+[/for]
+[/file]
+[/template]
+
+
+

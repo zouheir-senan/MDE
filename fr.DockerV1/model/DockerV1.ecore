@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="DockerV1" nsURI="http://www.example.org/DockerV1" nsPrefix="DockerV1">
+  <eClassifiers xsi:type="ecore:EClass" name="Image" eSuperTypes="#//DockerObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" lowerBound="1"
+        upperBound="-1" eType="#//Container" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repository" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DockerEngine">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dockerobject" upperBound="-1"
+        eType="#//DockerObject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="base_url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Container" eSuperTypes="#//DockerObject">
+    <eOperations name="ChangeStatus">
+      <eParameters name="status" eType="#//ConainerStatus"/>
+    </eOperations>
+    <eOperations name="Container">
+      <eParameters name="image" eType="#//Image"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="volume" eType="#//Volume"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="network" eType="#//Network"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conainerstatus" lowerBound="1"
+        eType="#//ConainerStatus" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Volume" eSuperTypes="#//Service">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="MountpointOUT" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="MountpointIN" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="#//Service">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="driver" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DockerObject" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" abstract="true" eSuperTypes="#//DockerObject"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeNetwork">
+    <eLiterals name="bridge"/>
+    <eLiterals name="host" value="1"/>
+    <eLiterals name="none" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConainerStatus" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerRunning" eSuperTypes="#//ConainerStatus">
+    <eOperations name="Stope">
+      <eParameters name="status" eType="#//ConainerStatus"/>
+    </eOperations>
+    <eOperations name="Pause">
+      <eParameters name="status" eType="#//ConainerStatus"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerStopped" eSuperTypes="#//ConainerStatus">
+    <eOperations name="Run">
+      <eParameters name="status" eType="#//ConainerStatus"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerPaused" eSuperTypes="#//ConainerStatus">
+    <eOperations name="Run">
+      <eParameters name="status" eType="#//ConainerStatus"/>
+    </eOperations>
+  </eClassifiers>
+</ecore:EPackage>

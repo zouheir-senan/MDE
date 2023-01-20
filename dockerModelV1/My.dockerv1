@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DockerV1:DockerEngine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DockerV1="http://www.example.org/DockerV1" base_url="tcp://192.168.149.128:2375">
+  <dockerobject xsi:type="DockerV1:Volume" name="vol1" MountpointOUT="/home/user1/" MountpointIN="/mnt/vol2"/>
+  <dockerobject xsi:type="DockerV1:Network" name="ntwork" driver="driver"/>
+  <dockerobject xsi:type="DockerV1:Image" repository="python" tag="latest">
+    <container volume="//@dockerobject.0" network="//@dockerobject.1" name="py3" command="1+2">
+      <conainerstatus xsi:type="DockerV1:ContainerRunning"/>
+    </container>
+  </dockerobject>
+  <dockerobject xsi:type="DockerV1:Image" repository="postgres" tag="latest">
+    <container volume="//@dockerobject.4" network="//@dockerobject.5" name="db1" command="select">
+      <conainerstatus xsi:type="DockerV1:ContainerPaused"/>
+    </container>
+  </dockerobject>
+  <dockerobject xsi:type="DockerV1:Volume" name="vol2" MountpointOUT="/var/www" MountpointIN="/mnt/vol1"/>
+  <dockerobject xsi:type="DockerV1:Network" name="n2" driver="test"/>
+  <dockerobject xsi:type="DockerV1:Image" repository="ubuntu" tag="latest">
+    <container name="test" command="test"/>
+  </dockerobject>
+</DockerV1:DockerEngine>
